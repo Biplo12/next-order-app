@@ -9,7 +9,10 @@ const Index = ({ orders }) => {
     <div>
       {ordersList.map((order) => (
         <ul key={order._id}>
-          <li>{order.title}</li>
+          <li>
+            <h2>{order.title}</h2>
+            <p>{order.desc}</p>
+          </li>
         </ul>
       ))}
     </div>
@@ -26,9 +29,7 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   }
-  const orderRes = await axios.get(
-    "https://next-order-app-biplo12.vercel.app:3000/api/orders"
-  );
+  const orderRes = await axios.get("http://localhost:3000/api/orders");
   return {
     props: {
       orders: orderRes.data,

@@ -13,28 +13,34 @@
     color: #1f98dc;
   }
   .error {
+    margin-top: 1rem;
     color: red;
   }
-  input {
-    width: 85%;
-    max-width: 300px;
-    border: 1px solid #1f98dc;
-    padding: 0.75rem 1rem;
-    color: black;
-    outline: none;
-  }
-  input:not(:first-child) {
-    margin: 0.5rem 0;
-  }
-  button {
-    width: 85%;
-    max-width: 300px;
-    background: #1f98dc;
-    padding: 0.75rem 2rem;
-    color: white;
-    margin-top: 1rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
+  form {
+    padding-top: 2rem;
+    input {
+      width: 85%;
+      max-width: 300px;
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid #1f98dc;
+      padding-bottom: 0.5rem;
+      color: white;
+      outline: none;
+    }
+    input:not(:first-child) {
+      margin: 1rem 0 0.25rem 0;
+    }
+    button {
+      width: 85%;
+      max-width: 300px;
+      background: #1f98dc;
+      padding: 0.75rem 2rem;
+      color: white;
+      margin-top: 1rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+    }
   }
 }

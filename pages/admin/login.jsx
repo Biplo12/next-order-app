@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Image from "next/image";
+import logo from "../../assets/images/logo-big.png";
 import styles from "./Login.module.scss";
 const Login = () => {
   const [username, setUsername] = useState(null);
@@ -8,15 +10,13 @@ const Login = () => {
   const [error, setError] = useState(false);
   const router = useRouter();
 
-  const handleClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await axios.post(
-        "https://next-order-app-biplo12.vercel.app:3000/api/login",
-        {
-          username,
-          password,
-        }
-      );
+      await axios.post("http://localhost:3000/api/login", {
+        username,
+        password,
+      });
       router.push("/admin");
     } catch (err) {
       setError(true);
@@ -24,19 +24,23 @@ const Login = () => {
   };
   return (
     <div className={styles.container}>
-      <h1>Login to admin panel</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleClick}>Login</button>
-      {error && <h3 className={styles.error}>Error occurred</h3>}
+      <Image src={logo} width={"375px"} height={"125px"} />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Nazwa użytkownika"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Hasło"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Zaloguj się</button>
+      </form>
+      {error && (
+        <h4 className={styles.error}>Wystąpił błąd podczas logowania</h4>
+      )}
     </div>
   );
 };

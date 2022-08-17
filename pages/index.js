@@ -18,9 +18,7 @@ export default function Home({ ordersList }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await axios.get(
-    "https://next-order-app-biplo12.vercel.app:3000/api/orders"
-  );
+  const res = await axios.get("http://localhost:3000/api/orders");
   return {
     props: {
       ordersList: res.data,
