@@ -26,7 +26,9 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   }
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const orderRes = await axios.get(
+    "https://next-order-app-biplo12.vercel.app:3000/api/orders"
+  );
   return {
     props: {
       orders: orderRes.data,
