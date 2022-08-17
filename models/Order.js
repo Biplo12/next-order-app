@@ -10,6 +10,11 @@ const OrderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      required: true,
+      default: "Serwisant przyjął zgłoszenie",
+    },
   },
   { timestamps: true }
 );
